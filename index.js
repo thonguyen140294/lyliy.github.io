@@ -1,14 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const fs = require('fs');
-const csv = require('csv-parser');
 const results = [];
-
-fs.createReadStream('resources/data.csv')
-  .pipe(csv(['chinese', 'japanese', 'vietnamese']))
-  .on('data', (data) => results.push(data))
-  .on('end', () => {});
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
