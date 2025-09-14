@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<script></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lydy - Learn Japan</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+   <div class="flex min-h-screen w-full">
+      <div class="group peer hidden md:block text-sidebar-foreground bg-[#fafafa]" data-state="expanded" data-collapsible="" data-variant="sidebar" data-side="left">
+         <div class="duration-200 relative h-svh w-[16rem] bg-transparent transition-[width] ease-linear group-data-[collapsible=offcanvas]:w-0 group-data-[side=right]:rotate-180 group-data-[collapsible=icon]:w-[16rem-icon]"></div>
+         <div class="duration-200 fixed inset-y-0 z-10 hidden h-svh w-[16rem] transition-[left,right,width] ease-linear md:flex left-0 group-data-[collapsible=offcanvas]:left-[calc(16rem*-1)] group-data-[collapsible=icon]:w-[16rem-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l">
+            <div data-sidebar="sidebar" class="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow">
+               <div data-sidebar="header" class="flex flex-col gap-2 border-b p-6">
+                  <h2 class="text-lg font-semibold">LyLiy App</h2>
+               </div>
+               <div data-sidebar="content" class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden">
+                  <ul data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-1 mt-2">
+                     <li data-sidebar="menu-item" class="group/menu-item relative ml-2 hover:bg-[#f4f4f5]">
+                        <a href="/" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left">
+                           <span>Dashboard</span>
+                        </a>
+                     </li>
+                     <li data-sidebar="menu-item" class="group/menu-item relative ml-2 bg-[#f4f4f5]">
+                        <a href="/quick-check" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left font-bold">
+                           <span>Quick check</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <main class="flex-1 space-y-4 p-8 pt-6">
+         <div class="flex items-center justify-between space-y-2">
+            <h2 class="text-3xl font-bold tracking-tight">Quick check</h2>
+         </div>
+         <div class="space-y-4">
+            <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+               <div class="rounded-xl border bg-card text-card-foreground shadow">
+                  <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                     <div class="tracking-tight text-sm font-medium">Nhật</div>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign h-4 w-4 text-muted-foreground">
+                        <line x1="12" x2="12" y1="2" y2="22"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                     </svg>
+                  </div>
+                  <div class="p-6 pt-0">
+                     <div class="text-2xl font-bold">$45,231.89</div>
+                  </div>
+               </div>
+               <div class="rounded-xl border bg-card text-card-foreground shadow">
+                  <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                     <div class="tracking-tight text-sm font-medium">Hán</div>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-4 w-4 text-muted-foreground">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                     </svg>
+                  </div>
+                  <div class="p-6 pt-0">
+                     <div class="text-2xl font-bold">+2350</div>
+                  </div>
+               </div>
+               <div class="rounded-xl border bg-card text-card-foreground shadow">
+                  <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                     <div class="tracking-tight text-sm font-medium">Việt</div>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart h-4 w-4 text-muted-foreground">
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                     </svg>
+                  </div>
+                  <div class="p-6 pt-0">
+                     <div class="text-2xl font-bold">+12,234</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+</body>
+</html>
+<style>
+* {
+   border-color: #e4e4e7;
+}
+.text-card-foreground {
+   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+   background-color: #ffffff;
+   border-color: #e4e4e7;
+}
+.text-sidebar-foreground {
+   color: #3f3f46;
+}
+</style>

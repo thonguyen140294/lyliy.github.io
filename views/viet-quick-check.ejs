@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyliy - Learn Japan</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+</head>
+<body>
+   <div class="min-h-screen w-full">
+      <div class="flex h-screen bg-gray-100">
+         <!-- Mobile menu button -->
+         <div class="md:hidden p-4">
+           <button id="menuBtn" class="p-2 rounded-md bg-gray-200 hover:bg-gray-300">
+             <!-- Hamburger icon -->
+             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                 d="M4 6h16M4 12h16M4 18h16" />
+             </svg>
+           </button>
+         </div>
+       
+         <!-- Sidebar -->
+         <aside id="sidebar"
+           class="fixed md:static inset-y-0 left-0 w-64 bg-white shadow-md transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out z-50">
+           <div class="p-4 text-xl font-bold border-b flex justify-between items-center">
+             Lyliy App
+             <button id="closeBtn" class="md:hidden">
+               ✕
+             </button>
+           </div>
+           <nav class="p-4 space-y-2">
+             <a href="/" class="block px-3 py-2 rounded-lg hover:bg-gray-200">Vocabolaries</a>
+             <a href="/viet-quick-check" class="block px-3 py-2 rounded-lg bg-gray-200">Viet - Quick check</a>
+             <a href="/han-quick-check" class="block px-3 py-2 rounded-lg hover:bg-gray-200">Han - Quick check</a>
+           </nav>
+         </aside>
+       
+         <!-- Overlay for mobile -->
+         <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden"></div>
+       
+         <!-- Main Content -->
+         <div id="pre-content" class="flex-1 p-6 overflow-auto">
+            <div class="flex justify-center items-center  mb-4">
+               <h1 class="text-2xl font-semibold">Viet - Quick check</h1>
+           </div>
+           <div class="text-sm text-gray-500 mb-4 text-center">00:00:00</div>
+           <div class="mt-4 w-full flex flex-row items-center gap-2 justify-center">
+               <button id="start-test" class="w-full max-w-[200px] bg-blue-500 text-white p-2 rounded-md cursor-pointer">Start</button>
+            </div>
+         </div>
+         <main class="flex-1 p-6 overflow-auto hidden">
+           <div class="flex justify-between items-center  mb-4">
+               <h1 class="text-2xl font-semibold">Viet - Quick check</h1>
+               <p id="current-index" class="text-sm text-gray-500">
+                  1/<%= results.length %>
+               </p>
+           </div>
+
+           <div id="clock" class="text-sm text-gray-500 mb-4"></div>
+       
+           <div class="w-full">
+            <div class="rounded-xl border bg-card text-card-foreground shadow">
+               <div class="p-6 flex flex-row items-center justify-between space-y-0">
+                  <div id="show-meaning" class="text-2xl font-bold">
+                     
+                  </div>
+                  
+               </div>
+               <div class="p-6 pt-0 flex justify-between">
+                  <input id="first-meaning-input" type="text" class="w-full outline-none focus:outline-none" placeholder="Enter Chinese meaning">
+                  <div id="first-meaning-input-status" class="flex flex-row items-center gap-2">
+                     <svg class="hidden text-red-500 error-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban-icon lucide-ban"><path d="M4.929 4.929 19.07 19.071"/><circle cx="12" cy="12" r="10"/></svg>
+                     <svg class="hidden text-green-500 success-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                  </div>
+               </div>
+               <div class="p-6 pt-0 flex justify-between">
+                  <input id="second-meaning-input" type="text" class="w-full outline-none focus:outline-none" placeholder="Enter Japanese meaning">
+                  <div id="second-meaning-input-status" class="flex flex-row items-center gap-2">
+                     <svg class="hidden text-red-500 error-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban-icon lucide-ban"><path d="M4.929 4.929 19.07 19.071"/><circle cx="12" cy="12" r="10"/></svg>
+                     <svg class="hidden text-green-500 success-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                  </div>
+               </div>
+            </div>
+            </div>
+
+            <div id="result-table" class="bg-white shadow rounded-lg overflow-hidden my-4 hidden">
+               <table class="min-w-full text-left border-collapse">
+                 <tbody>
+                  <tr>
+                     <td id="chinese-result" class="px-6 py-4 border-b border-gray-100"></td>
+                     <td id="japanese-result" class="px-6 py-4 border-b border-gray-100"></td>
+                     <td id="vietnamese-result" class="px-6 py-4 border-b border-gray-100"></td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+
+            <div class="mt-4 w-full flex flex-row items-center gap-2">
+               <button class="w-full max-w-[200px] outline p-2 rounded-md cursor-pointer">Show Result</button>
+               <button class="w-full max-w-[200px] bg-gray-500 text-white p-2 rounded-md cursor-not-allowed next-button">Next</button>
+            </div>
+         </main>
+       </div>
+       <script>
+         const results = <%- JSON.stringify(results) %>;
+         const requestMeaning = 'vietnamese'
+         const answerMeaning1 = 'chinese'
+         const answerMeaning2 = 'japanese'
+       </script>
+       <script type="text/javascript" src="/layout.js"></script>
+       <script type="text/javascript" src="/quick-check.js"></script>
+   </div>
+</body>
+</html>
+<style>
+* {
+   border-color: #e4e4e7;
+}
+.text-card-foreground {
+   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+   background-color: #ffffff;
+   border-color: #e4e4e7;
+}
+.text-sidebar-foreground {
+   color: #3f3f46;
+}
+</style>

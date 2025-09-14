@@ -1,0 +1,15 @@
+{
+  "name": "learn-japan-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "csv-parser": "^3.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "vercel": "^47.0.5"
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lydy - Learn Japan</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+   <div class="min-h-screen w-full">
+      <div class="flex h-screen bg-gray-100">
+         <!-- Mobile menu button -->
+         <div class="md:hidden p-4">
+           <button id="menuBtn" class="p-2 rounded-md bg-gray-200 hover:bg-gray-300">
+             <!-- Hamburger icon -->
+             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                 d="M4 6h16M4 12h16M4 18h16" />
+             </svg>
+           </button>
+         </div>
+       
+         <!-- Sidebar -->
+         <aside id="sidebar"
+           class="fixed md:static inset-y-0 left-0 w-64 bg-white shadow-md transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out z-50">
+           <div class="p-4 text-xl font-bold border-b flex justify-between items-center">
+             Lyliy App
+             <button id="closeBtn" class="md:hidden">
+               ✕
+             </button>
+           </div>
+           <nav class="p-4 space-y-2">
+             <a href="/" class="block px-3 py-2 rounded-lg bg-gray-200">Vocabolaries</a>
+             <a href="/viet-quick-check" class="block px-3 py-2 rounded-lg hover:bg-gray-200">Viet - Quick check</a>
+             <a href="/han-quick-check" class="block px-3 py-2 rounded-lg hover:bg-gray-200">Han - Quick check</a>
+           </nav>
+         </aside>
+         <!-- Overlay for mobile -->
+         <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden"></div>
+         <!-- Main Content -->
+         <main class="flex-1 p-6 overflow-auto">
+           <h1 class="text-2xl font-semibold mb-4">Vocabolaries</h1>
+           <div class="bg-white shadow rounded-lg overflow-hidden">
+             <table class="min-w-full text-left border-collapse">
+               <thead class="bg-gray-50 border-b">
+                 <tr>
+                   <th class="p-4 text-sm font-medium text-gray-600">Chinese</th>
+                   <th class="p-4 text-sm font-medium text-gray-600">Japanese</th>
+                   <th class="p-4 text-sm font-medium text-gray-600">Vietnamese</th>
+                 </tr>
+               </thead>
+               <tbody>
+                  <% for (let i = 0; i < results.length; i++) { %>
+                    <tr>
+                      <td class="p-4 border-b border-gray-100"><%= results[i].chinese %></td>
+                      <td class="p-4 border-b border-gray-100"><%= results[i].japanese %></td>
+                      <td class="p-4 border-b border-gray-100"><%= results[i].vietnamese %></td>
+                    </tr>
+                  <% } %>
+               </tbody>
+             </table>
+           </div>
+         </main>
+       </div>
+       <script type="text/javascript" src="/layout.js"></script>
+   </div>
+</body>
+</html>
+<style>
+* {
+   border-color: #e4e4e7;
+}
+.text-card-foreground {
+   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+   background-color: #ffffff;
+   border-color: #e4e4e7;
+}
+.text-sidebar-foreground {
+   color: #3f3f46;
+}
+</style>
